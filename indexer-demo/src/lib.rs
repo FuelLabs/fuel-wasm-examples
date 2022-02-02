@@ -18,13 +18,11 @@ fn function_one(event: LogEvent) {
 
     let mut t1 = match Thing1::load(rega) {
         Some(t) => t,
-        None => {
-            Thing1 {
-                id: rega,
-                account: Address::from(contract),
-                count: 0,
-            }
-        }
+        None => Thing1 {
+            id: rega,
+            account: Address::from(contract),
+            count: 0,
+        },
     };
 
     t1.count += regb;
