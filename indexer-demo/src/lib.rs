@@ -7,23 +7,27 @@ graphql_schema!("demo_namespace", "schema/demo_schema.graphql");
 wasm_abigen!(no_name, "indexer-demo/contracts/indexer_demo.json");
 
 #[handler]
-fn function_one(event: MyEvent) {
-    let MyEvent {
+fn function_one(event: LogEvent) {
+    Logger::info("Callin' the event handler");
+    let LogEvent {
         contract,
         rega,
         regb,
+        ..
     } = event;
 
-    let t1 = Thing1 {
-        id: rega,
-        account: Address::from(contract),
+    let mut t1 = match Thing1::load(rega) {
+        Some(t) => t,
+        None => {
+            Thing1 {
+                id: rega,
+                account: Address::from(contract),
+                count: 0,
+            }
+        }
     };
 
-    let t2 = Thing2 {
-        id: regb,
-        hash: Bytes32::from(contract),
-    };
+    t1.count += regb;
 
     t1.save();
-    t2.save();
 }

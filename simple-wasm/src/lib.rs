@@ -16,6 +16,14 @@ fn function_one(event: SomeEvent, event2: AnotherEvent) {
         account: Address::from(account),
     };
     t1.save();
+
+    let t2 = Thing2 {
+        id,
+        account: Address::from(account),
+        hash: Bytes32::from(hash),
+    };
+
+    t2.save();
 }
 
 #[handler]
