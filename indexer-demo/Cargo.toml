@@ -8,8 +8,8 @@ publish = false
 crate-type = ['cdylib']
 
 [dependencies]
-fuels-core = { path = "../../fuels-rs/fuels-core", features=["no-std"] }
-fuel-indexer = { path = "../../fuel-core/fuel-indexer/lib" }
-fuel-indexer-derive = { path = "../../fuel-core/fuel-indexer/derive" }
-fuels-abigen-macro = { path = "../../fuels-rs/fuels-abigen-macro" }
+fuels-core = { git = "https://github.com/FuelLabs/fuels-rs.git", package = "fuels-core", rev = "9ca3767e78", features=["no-std"] }
+fuel-indexer = { git = "https://github.com/FuelLabs/fuel-core.git", package = "fuel-indexer", branch = "integrate-with-client" }
+fuel-indexer-derive = { git = "https://github.com/FuelLabs/fuel-core.git", package = "fuel-indexer-derive", branch = "integrate-with-client" }
+fuels-abigen-macro = { git = "https://github.com/FuelLabs/fuels-rs.git", package = "fuels-abigen-macro", rev = "9ca3767e78" }
 serde = { version = "1.0", default-features = false, features = ["derive"] }
