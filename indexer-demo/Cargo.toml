@@ -1,0 +1,15 @@
+[package]
+name = "indexer-demo"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ['cdylib']
+
+[dependencies]
+fuels-core = { git = "https://github.com/FuelLabs/fuels-rs.git", package = "fuels-core", rev = "9ca3767e78", features=["no-std"] }
+fuel-indexer = { git = "https://github.com/FuelLabs/fuel-core.git", package = "fuel-indexer", branch = "integrate-with-client" }
+fuel-indexer-derive = { git = "https://github.com/FuelLabs/fuel-core.git", package = "fuel-indexer-derive", branch = "integrate-with-client" }
+fuels-abigen-macro = { git = "https://github.com/FuelLabs/fuels-rs.git", package = "fuels-abigen-macro", rev = "9ca3767e78" }
+serde = { version = "1.0", default-features = false, features = ["derive"] }
